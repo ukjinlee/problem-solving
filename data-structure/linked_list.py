@@ -8,17 +8,13 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self):
-        self.head = None
-        self.tail = None
+    def __init__(self, item):
+        self.head = Node(item)
+        self.tail = self.head
 
     def add(self, item):
-        if self.tail is None:
-            self.tail = Node(item)
-            self.head = self.tail
-        else:
-            self.tail.next = Node(item)
-            self.tail = self.tail.next
+        self.tail.next = Node(item)
+        self.tail = self.tail.next
 
     def remove(self, item):
         if self.head.val == item:
@@ -60,8 +56,7 @@ class LinkedList:
 
 class TestLinkedList(unittest.TestCase):
     def test(self):
-        ll = LinkedList()
-        ll.add(3)
+        ll = LinkedList(3)
         self.assertEqual(ll.head.val, 3)
         ll.add(4)
         self.assertEqual(ll.head.next.val, 4)
@@ -79,8 +74,7 @@ class TestLinkedList(unittest.TestCase):
         ll.remove(6)
         self.assertEqual(ll.head.next.val, 7)
 
-        ll2 = LinkedList()
-        ll2.add(9)
+        ll2 = LinkedList(9)
         ll2.add(8)
         ll2.add(7)
         ll2.reverse()
