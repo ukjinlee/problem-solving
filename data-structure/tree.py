@@ -35,6 +35,14 @@ class Tree:
             stack += reversed(node.children)
         print('end')
 
+    def bfs(self):
+        queue = [self.root]
+        while queue:
+            node = queue.pop(0)
+            print("%d ->" % node.val, end=" ")
+            queue += node.children
+        print('end')
+
 
 def test():
     tree = Tree()
@@ -54,6 +62,7 @@ def test():
 
     tree.dfs_recursive()
     tree.dfs_stack()
+    tree.bfs()
 
 
 if __name__ == "__main__":
