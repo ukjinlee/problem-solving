@@ -18,7 +18,7 @@ class Tree:
             self.root.children.append(TreeNode(val))
 
     def dfs_recursive(self, node=None):
-        if (node is None):
+        if node is None:
             node = self.root
 
         print("%d ->" % node.val, end=" ")
